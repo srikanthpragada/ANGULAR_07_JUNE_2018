@@ -1,0 +1,21 @@
+
+<h1>Data Binding Demo</h1>
+
+<h2 [innerHTML]="'Demo'"></h2>
+
+<h2 innerHTML="{{title}}"></h2>
+<h2>{{title}}</h2>
+
+<input type="{{itype}}"/>
+
+<p></p>
+<table border="1">
+    <tr>
+        <td [attr.colspan]="nocols">1,1</td>
+        <td>1,2</td>
+    </tr>
+    <tr>
+        <td>2,1</td>
+        <td>2,2</td>
+    </tr>
+</table>

@@ -4,9 +4,10 @@
 <h3>Topics</h3>
 
 <ul>
-    <li  *ngFor="let t of topics">
-        {{t}}{{t}}
+    <li  *ngFor="let t of topics; let idx = index">
+        {{t}}  <button (click)="deleteTopic(idx)">Delete</button>
     </li>
 </ul>
 
-
+New Topic : <input type="text"  #topic />
+<button (click)="addTopic(topic.value)">Add Topic</button>
