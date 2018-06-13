@@ -1,10 +1,29 @@
+<style>
+    .bright { color : red; }
+    .big  { font-size : 30pt}
+</style>
 
 <h1>Data Binding Demo</h1>
 
-<h2 [innerHTML]="'Demo'"></h2>
+<input type="checkbox"  #bright  (click)="1==1" >Bright 
+<input type="checkbox"  #big  (click)="1==1" >Big
 
-<h2 innerHTML="{{title}}"></h2>
-<h2>{{title}}</h2>
+<h2 [ngClass]="{'bright' : bright.checked, 'big' : big.checked}">
+    {{title}}
+</h2>
+
+
+<!--
+<h2 [class.bright]='bright.checked' 
+    [class.big]='big.checked'>
+    {{title}}
+</h2>
+
+-->
+
+<button (mousemove)="showMouse($event)">Move Mouse On Me</button>
+
+<p></p>
 
 <input type="{{itype}}"/>
 

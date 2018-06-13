@@ -1,0 +1,17 @@
+
+<h2  *ngIf="getHours() >= 20">Good Evening </h2>
+<h2  *ngIf="getHours() < 20">Good Morning </h2>
+
+<h2 *ngIf="getHours() >= 20; then evening; else morning"></h2>
+<ng-template #evening>
+      <h2>This is evening </h2>
+</ng-template> 
+<ng-template #morning>
+        <h2>This is morning </h2>
+</ng-template> 
+
+<div *ngFor="let l of langs;let oddRow=odd">
+    <span  [style.color]="oddRow ? 'Red' : 'Green'">
+        {{l}}
+    </span>
+</div>
