@@ -1,18 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CourseComponent } from './course.component';
-import { DbDemoComponent } from './dbdemo.component';
-import { StructDirComponent } from './structdir.component';
-
+import { PipesDemoComponent } from './pipes/pipesdemo.component';
+import { BracketsPipe } from './pipes/brackets.pipe';
+import { SecondComponent } from './icc/second.component';
+import { FirstComponent } from './icc/first.component';
+import { CourseListComponent } from './icc/courselist.component';
+import { CourseDetailsComponent } from './icc/coursedetails.component';
 
 @NgModule({
   declarations: [
-       StructDirComponent
+       CourseListComponent, CourseDetailsComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [ StructDirComponent]
+  bootstrap: [CourseListComponent]
 })
 export class AppModule { }
