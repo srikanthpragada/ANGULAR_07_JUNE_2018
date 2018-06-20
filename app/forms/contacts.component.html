@@ -1,0 +1,31 @@
+<h1>Contacts</h1>
+
+<form (ngSubmit)="addContact()" #contactForm="ngForm" novalidate>
+    Fullname
+    <br>
+    <input type="text" name="fullname" #fname="ngModel" [(ngModel)]="contact.name" required />
+    <p></p>
+    Mobile Number
+    <br>
+    <input type="text" name="mobile" #mobile="ngModel" [(ngModel)]="contact.mobile" required minlength="10" maxlength="10" />
+    <p></p>
+    <button>Add Contact</button>
+</form>
+<p></p>
+<div *ngIf="contacts.length > 0">
+    <table width="100%" border="1">
+        <tr>
+            <th>Fullname</th>
+            <th>Mobile Number</th>
+            <th>Delete</th>
+        </tr>   
+        <tr *ngFor="let c of contacts">
+            <td> <input type="text"  [(ngModel)]="c.name"/> </td>
+            <td> <input type="text"  [(ngModel)]="c.mobile"/> </td>
+            <td> <input type="checkbox" [(ngModel)]="c.delete" /> </td>
+        </tr>
+    </table>
+    <p></p>
+    <button (click)="deleteContacts()">Delete Contacts</button>
+    <button (click)="saveContacts()">Save Contacts</button>
+</div>
