@@ -19,5 +19,7 @@
     <p></p>
     loginForm.errors  : {{ loginForm.errors | json}}
 
-    <h4 *ngIf="loginForm.dirty && loginForm.errors?.match">Password cannot be same as username </h4>
+    <h4 *ngIf="loginForm.dirty && loginForm.errors?.match">
+        Password cannot be same as username 
+    </h4>
 </form>

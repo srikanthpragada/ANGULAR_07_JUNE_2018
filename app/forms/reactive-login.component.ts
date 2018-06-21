@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyValidators} from './MyValidators'
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -11,11 +12,12 @@ export class ReactiveLoginComponent {
     loginForm : FormGroup;
     
     // FormControl validator 
+    // Returns null if data is valid otherwise object 
     mustHaveStar(control : FormControl) 
     {
        // if no data is present then valid 
        if(control.value == "")
-          return null;
+          return null;  // No error 
 
        // data is present but no * is present then error    
        if (control.value.indexOf("*") >= 0)
@@ -25,7 +27,7 @@ export class ReactiveLoginComponent {
     }
     // FormGroup validator to ensure password is not same as username 
     matchUsernamePassword(g : FormGroup) {
-      if (g.get("username").invalid || g.get("password").invalid)
+      if (g.get("username").invalid || g.controls.password.invalid)
            return null;
 
       if (g.get('username').value != g.get('password').value)
@@ -36,24 +38,36 @@ export class ReactiveLoginComponent {
 
     ngOnInit() { 
        this.username = new FormControl("", 
-                    [Validators.required 
-                      // Validators.pattern("[a-zA-Z]+")
+                    [Validators.required,
+                     Validators.pattern("[a-zA-Z*]+")
                     ]) ;
        this.password = new FormControl("",
-                    [Validators.required, this.mustHaveStar]);
+                    [
+                      Validators.required,
+                      // MyValidators.mustHaveDot,
+                      this.mustHaveStar     // custom validation
+                    ]);
 
        this.loginForm = new FormGroup(
          { 
             username : this.username,
             password : this.password
          },
-         this.matchUsernamePassword
+         this.matchUsernamePassword   // custom validation
        );
     }
 
    login() {
-     if ( this.loginForm.valid) {
+     if (this.loginForm.valid) {
             // process 
+            console.log(this.username.value);
+            console.log(this.loginForm.controls.username.value);
+            console.log(this.password.value);
+     }
+     else {
+         console.log("Form     Errors : " + this.loginForm.errors)
+         console.log("Username Errors : " + this.username.errors)
+         console.log("Passwrod Errors : " + this.password.errors)
      }
 
      console.log( this.username);
