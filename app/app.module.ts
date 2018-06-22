@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { ReactiveLoginComponent } from './forms/reactive-login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BooksComponent } from './http/books.component';
+import { CountriesComponent } from './http/countries.component';
+import { SearchCountriesComponent } from './http/search-countries.component';
 
 @NgModule({
   declarations: [
-        ReactiveLoginComponent
+        BooksComponent, CountriesComponent, SearchCountriesComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule
+    BrowserModule, HttpClientModule
   ],
   providers: [],
-  bootstrap: [ReactiveLoginComponent]
+  bootstrap: [SearchCountriesComponent]
 })
 export class AppModule { }

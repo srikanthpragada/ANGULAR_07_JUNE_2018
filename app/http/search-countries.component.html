@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Countries</title>
+</head>
+
+<body>
+
+    <h1>Search Countries</h1>
+    Name :
+    <input type="text" #name/>
+    <button (click)="search(name.value)">Search</button>
+    <p></p>
+    <div *ngIf="message">{{message}}</div>
+    
+    <div *ngIf="countries.length > 0">
+        No. of countries : {{ countries.length}}
+        <p></p>
+        <table border="1" style="width:100%">
+            <tr>
+                <th>Name </th>
+                <th>Capital </th>
+            </tr>
+            <tr *ngFor="let c of countries">
+                <td> {{ c.name }} </td>
+                <td> {{ c.capital }} </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
