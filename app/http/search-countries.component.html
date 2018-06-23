@@ -20,10 +20,12 @@
             <tr>
                 <th>Name </th>
                 <th>Capital </th>
+                <th></th>
             </tr>
             <tr *ngFor="let c of countries">
                 <td> {{ c.name }} </td>
                 <td> {{ c.capital }} </td>
+                <td style="text-align: center"> <img [src]="c.flag"  width="100px" height="100px" /></td>
             </tr>
         </table>
     </div>

@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BooksComponent } from './http/books.component';
-import { CountriesComponent } from './http/countries.component';
-import { SearchCountriesComponent } from './http/search-countries.component';
+import { WebBooksComponent } from './http/webbooks.component';
+import { AddBookComponent } from './http/add-book.component';
 
 @NgModule({
   declarations: [
-        BooksComponent, CountriesComponent, SearchCountriesComponent
+      AddBookComponent, WebBooksComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, FormsModule
   ],
   providers: [],
-  bootstrap: [SearchCountriesComponent]
+  bootstrap: [AddBookComponent, WebBooksComponent]
 })
 export class AppModule { }
