@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { WebBook } from './WebBook';
 import { HttpClient } from '@angular/common/http'
+import { BooksService} from '../service/books.service'
 
 @Component({
     selector: 'st-books',
-    templateUrl: './webbooks.component.html'
+    templateUrl: './webbooks.component.html',
+    providers : [BooksService]
 })
 export class WebBooksComponent implements OnInit {
     books: WebBook[];
     URL = "http://test.srikanthpragada.com/api/books"
-    constructor(private http : HttpClient) {
+
+    constructor(private http : HttpClient, 
+                private booksService : BooksService ) {
     }
 
     ngOnInit() {
-        this.getAllBooks()
+        // this.getAllBooks()
+        this.getAllBooksByService()
     }
 
     getAllBooks() {
@@ -22,9 +27,8 @@ export class WebBooksComponent implements OnInit {
     }
 
     getAllBooksByService() {
-       // this.booksService.getAllBooks()
-            // .map(this.costlyBooks)
-         //   .subscribe(result => this.books = result);
+         this.booksService.getAllBooks()
+             .subscribe(result => this.books = result);
     }
 
     deleteBook(id: number, idx : number) {
@@ -41,7 +45,7 @@ export class WebBooksComponent implements OnInit {
         
         // this.booksService.deleteBook(id)
         //     .subscribe(resp => this.getAllBooks(),
-        //         error => alert("Sorry! Book could not be deleted!")
+        //                error => alert("Sorry! Book could not be deleted!")
         //     );
     }
     costlyBooks(books: WebBook[]): WebBook[] {
