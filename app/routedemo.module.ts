@@ -11,12 +11,14 @@ import { HomeComponent } from './route/home.component';
 import { DetailsComponent } from './route/details.component';
 import { DeleteComponent } from './route/delete.component';
 import { AddRouteGuard } from './route/add.guard';
+import { LogRouteGuard } from './route/log.guard';
 
 // Route configuration 
 const appRoutes : Routes = [
-  { path: 'list', component: ListComponent },
+  { path: 'list', component: ListComponent, canActivate : [LogRouteGuard] },
   { path: 'all', redirectTo : 'list' },
-  { path: 'add', component : AddComponent , canDeactivate : [AddRouteGuard]},
+  { path: 'add', component : AddComponent , 
+                             canDeactivate : [AddRouteGuard]},
   { path: 'details/:code', component : DetailsComponent},
   { path: 'delete/:code', component : DeleteComponent},
   { path: '', component : HomeComponent , pathMatch : 'full'},
@@ -33,7 +35,7 @@ const appRoutes : Routes = [
     FormsModule, 
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ AddRouteGuard ],
+  providers: [ AddRouteGuard, LogRouteGuard ],
   bootstrap: [ MainComponent ]
 })
 export class RouteDemoModule { }

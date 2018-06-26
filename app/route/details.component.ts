@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './details.component.html'
 })
 export class DetailsComponent implements OnInit {
-   country: Country = null;
+    country: Country = null;
 
     constructor(private route: ActivatedRoute) {
     }
